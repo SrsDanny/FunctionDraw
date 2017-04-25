@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 
 namespace funcdraw
 {
@@ -14,17 +15,16 @@ namespace funcdraw
 
 	class Constant final : public Expression
 	{
-		double number;
+		double value;
 
 	public:
-		explicit Constant(double number)
-			: number(number)
+		explicit Constant(double value)
+			: value(value)
 		{}
 
-		double evaluate(double x) override
-		{
-			return number;
-		}
+		double evaluate(double x) override { return value; }
+
+		double getValue() const { return value; }
 	};
 
 	class Variable final : public Expression

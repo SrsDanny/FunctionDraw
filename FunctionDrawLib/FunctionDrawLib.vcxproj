@@ -27,6 +27,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\source\lib\Drawer.cpp" />
+    <ClCompile Include="..\source\lib\Parser.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{91C61C7C-170F-49A5-B40C-9A11AC28B501}</ProjectGuid>
