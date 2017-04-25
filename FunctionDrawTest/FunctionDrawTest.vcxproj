@@ -28,9 +28,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\source\test\ExpressionBuilderTest.cpp" />
-    <ClCompile Include="..\source\test\ExpressionGrammarTest.cpp" />
     <ClCompile Include="..\source\test\ExpressionTest.cpp" />
+    <ClCompile Include="..\source\test\ParserTest.cpp" />
     <ClCompile Include="..\source\test\TestMain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\test\HelperFunctions.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{7A63F680-D02C-423C-94D3-F332A007E479}</ProjectGuid>

@@ -2,53 +2,54 @@
 #include <memory>
 #include "ExpressionBuilder.hpp"
 #include "Expression.hpp"
+#include "HelperFunctions.hpp"
 
-template<typename T, char c>
-struct ValueAndType
+using namespace funcdraw;
+
+namespace test
 {
-	using type = T;
-	static constexpr char op = c;
-};
+	template<typename T, char c>
+	struct ValueAndType
+	{
+		using type = T;
+		static constexpr char op = c;
+	};
 
-template<typename T>
-class ExpressionBuilderTest : public ::testing::Test
-{
-	
-};
+	template<typename T>
+	class ExpressionBuilderTest : public testing::Test
+	{};
 
-typedef ::testing::Types
-<
-	ValueAndType<funcdraw::Sum, '+'>,
-	ValueAndType<funcdraw::Subtract, '-'>,
-	ValueAndType<funcdraw::Multiply, '*'>,
-	ValueAndType<funcdraw::Divide, '/'>
-> MyTypes;
+	typedef testing::Types
+	<
+		ValueAndType<Sum, '+'>,
+		ValueAndType<Subtract, '-'>,
+		ValueAndType<Multiply, '*'>,
+		ValueAndType<Divide, '/'>
+	> MyTypes;
 
-TYPED_TEST_CASE(ExpressionBuilderTest, MyTypes);
+	TYPED_TEST_CASE(ExpressionBuilderTest, MyTypes);
  
-TEST(ExpressionBuilderTest, MakeConstantWorks)
-{
-	auto constantExpr = funcdraw::ExpressionBuilder::MakeConstant()(42);
-	ASSERT_NE(nullptr, constantExpr);
-	auto constant = std::dynamic_pointer_cast<funcdraw::Constant>(constantExpr);
-	ASSERT_NE(nullptr, constant);
-	EXPECT_EQ(42, constant->getValue());
-}
+	TEST(ExpressionBuilderTest, MakeConstantWorks)
+	{
+		auto constantExpr = ExpressionBuilder::MakeConstant()(42);
+		ASSERT_NE(nullptr, constantExpr);
+		auto constant = dynamicCastAndAssertNotNull<Constant>(constantExpr);
+		EXPECT_EQ(42, constant->getValue());
+	}
 
-TEST(ExpressionBuilderTest, MakeVariableWorks)
-{
-	auto variableExpr = funcdraw::ExpressionBuilder::MakeVariable()();
-	ASSERT_NE(nullptr, variableExpr);
-	auto variable = std::dynamic_pointer_cast<funcdraw::Variable>(variableExpr);
-	ASSERT_NE(nullptr, variable);
-}
+	TEST(ExpressionBuilderTest, MakeVariableWorks)
+	{
+		auto variableExpr = ExpressionBuilder::MakeVariable()();
+		ASSERT_NE(nullptr, variableExpr);
+		dynamicCastAndAssertNotNull<Variable>(variableExpr);
+	}
 
-TYPED_TEST(ExpressionBuilderTest, MakeTwoOperandWorks)
-{
-	funcdraw::ExpressionBuilder::MakeTwoOperand makeTwoOperand;
+	TYPED_TEST(ExpressionBuilderTest, MakeTwoOperandWorks)
+	{
+		ExpressionBuilder::MakeTwoOperand makeTwoOperand;
 
-	auto twoOp = makeTwoOperand(nullptr, TypeParam::op, nullptr);
-	ASSERT_NE(nullptr, twoOp);
-	auto concreteOp = std::dynamic_pointer_cast<TypeParam::type>(twoOp);
-	ASSERT_NE(nullptr, concreteOp);
+		auto twoOp = makeTwoOperand(nullptr, TypeParam::op, nullptr);
+		ASSERT_NE(nullptr, twoOp);
+		dynamicCastAndAssertNotNull<TypeParam::type>(twoOp);
+	}
 }

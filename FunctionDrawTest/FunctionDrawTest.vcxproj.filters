@@ -24,8 +24,13 @@
     <ClCompile Include="..\source\test\ExpressionTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\test\ExpressionGrammarTest.cpp">
+    <ClCompile Include="..\source\test\ParserTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\test\HelperFunctions.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

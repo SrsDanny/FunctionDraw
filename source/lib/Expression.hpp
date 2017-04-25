@@ -54,6 +54,9 @@ namespace funcdraw
 		{
 			return doOperation(lhs->evaluate(x), rhs->evaluate(x));
 		}
+
+		ptr getLhs() const { return lhs; }
+		ptr getRhs() const { return rhs; }
 	};
 
 	class Sum final : public TwoOperand
