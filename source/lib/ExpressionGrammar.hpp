@@ -33,17 +33,17 @@ namespace funcdraw
 			using ascii::char_;
 
 			expression = product[_val = _1]
-				>> *((operatorSum >> product)[_val = makeTwoOperand(_val, _1, _2)]);
+				>> *((operatorSum > product)[_val = makeTwoOperand(_val, _1, _2)]);
 
 			operatorSum %= char_('+') | char_('-');
 
 			product = factor[_val = _1]
-				>> *((operatorProd >> factor)[_val = makeTwoOperand(_val, _1, _2)]);
+				>> *((operatorProd > factor)[_val = makeTwoOperand(_val, _1, _2)]);
 
 			operatorProd %= char_('*') | char_('/');
 
 			factor %= number | variable | parenthesized;
-			parenthesized %= '(' >> expression >> ')';
+			parenthesized %= '(' > expression > ')';
 			number = qi::double_[_val = makeConstant(_1)];
 			variable = char_('x')[_val = makeVariable()];
 		}

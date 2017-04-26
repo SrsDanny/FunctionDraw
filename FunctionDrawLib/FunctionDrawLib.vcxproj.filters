@@ -30,12 +30,18 @@
     <ClInclude Include="..\source\lib\ExpressionBuilder.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\source\lib\ParseException.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\source\lib\Drawer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\source\lib\Parser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\lib\ParseException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

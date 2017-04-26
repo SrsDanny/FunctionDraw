@@ -23,10 +23,12 @@
     <ClInclude Include="..\source\lib\Expression.hpp" />
     <ClInclude Include="..\source\lib\ExpressionBuilder.hpp" />
     <ClInclude Include="..\source\lib\ExpressionGrammar.hpp" />
+    <ClInclude Include="..\source\lib\ParseException.hpp" />
     <ClInclude Include="..\source\lib\Parser.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\source\lib\Drawer.cpp" />
+    <ClCompile Include="..\source\lib\ParseException.cpp" />
     <ClCompile Include="..\source\lib\Parser.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

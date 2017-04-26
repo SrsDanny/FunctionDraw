@@ -7,6 +7,6 @@ namespace funcdraw
 	class Parser
 	{
 	public:
-		static Expression::ptr parse(std::string expressionStr);
+		static Expression::ptr parse(const std::string& expressionStr);
 	};
 }

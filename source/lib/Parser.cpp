@@ -2,22 +2,32 @@
 #include <boost/spirit/include/qi.hpp>
 #include <string>
 #include "ExpressionGrammar.hpp"
+#include "ParseException.hpp"
 
 namespace qi = boost::spirit::qi;
 namespace ascii = boost::spirit::ascii;
 
-funcdraw::Expression::ptr funcdraw::Parser::parse(std::string expressionStr)
+funcdraw::Expression::ptr funcdraw::Parser::parse(const std::string& expressionStr)
 {
 	Expression::ptr returnExpression;
 	auto iter = expressionStr.begin();
 	auto end = expressionStr.end();
 
-	ExpressionGrammar<std::string::iterator> grammar;
-	auto r = phrase_parse(iter, end, grammar, ascii::space, returnExpression);
+	ExpressionGrammar<std::string::const_iterator> grammar;
 
-	if(!r || iter != end)
+	bool result = true;
+	try
 	{
-		throw 1;
+		result = phrase_parse(iter, end, grammar, ascii::space, returnExpression);
+	}
+	catch (qi::expectation_failure<std::string::const_iterator>& e)
+	{
+		throw ParseException(e.first, e.last, e.first - expressionStr.begin());
+	}
+
+	if(!result || iter != end)
+	{
+		throw ParseException(iter, end, iter - expressionStr.begin());
 	}
 
 	return returnExpression;

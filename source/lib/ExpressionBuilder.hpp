@@ -1,6 +1,6 @@
 #pragma once
 #include "Expression.hpp"
-#include <boost/spirit/include/phoenix.hpp>
+#include <exception>
 
 namespace funcdraw
 {
@@ -21,7 +21,7 @@ namespace funcdraw
 				case '*':
 					return std::make_shared<Multiply>(lhs, rhs);
 				default:
-					throw 1;
+					throw std::invalid_argument("Invalid operator");
 				}
 			}
 		};

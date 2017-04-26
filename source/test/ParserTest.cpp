@@ -2,11 +2,14 @@
 #include <Parser.hpp>
 #include <string>
 #include "HelperFunctions.hpp"
+#include "ParseException.hpp"
 
 using namespace funcdraw;
 
 namespace test
 {
+	class ParserTest : public ::testing::TestWithParam<std::string>{};
+
 	TEST(ParserTest, TestSimpleSum)
 	{
 		std::string expressionStr = "1 + x";
@@ -39,4 +42,23 @@ namespace test
 		auto expression = Parser::parse(expressionStr);
 		dynamicCastAndAssertNotNull<Constant>(expression);
 	}
+
+	TEST_P(ParserTest, TestInvalidExpression)
+	{
+		EXPECT_THROW(Parser::parse(GetParam()), ParseException);
+	}
+
+	INSTANTIATE_TEST_CASE_P(InvalidExpressionsTest,
+		ParserTest,
+		testing::Values(
+			"foo", 
+			"bar",
+			"42 + bar",
+			"42 + (bar - 12)",
+			"42 + - 1337",
+			"((((42)))",
+			"(((42))))",
+			"42 + (((42 - 69))",
+			"42 * 3 -"
+		));
 }
