@@ -31,6 +31,7 @@
     <ClCompile Include="..\source\test\ExpressionBuilderTest.cpp" />
     <ClCompile Include="..\source\test\ExpressionTest.cpp" />
     <ClCompile Include="..\source\test\ParserTest.cpp" />
+    <ClCompile Include="..\source\test\RangeTest.cpp" />
     <ClCompile Include="..\source\test\TestMain.cpp" />
   </ItemGroup>
   <ItemGroup>

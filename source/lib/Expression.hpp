@@ -11,6 +11,8 @@ namespace funcdraw
 		virtual ~Expression() {}
 
 		virtual double evaluate(double x) = 0;
+
+		double operator()(double x) { return evaluate(x); }
 	};
 
 	class Constant final : public Expression

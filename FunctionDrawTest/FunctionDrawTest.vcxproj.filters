@@ -30,6 +30,9 @@
     <ClCompile Include="..\source\test\EvaluateTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\test\RangeTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\test\HelperFunctions.hpp">

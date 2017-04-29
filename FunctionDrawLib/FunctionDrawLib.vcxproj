@@ -19,15 +19,22 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\source\lib\Drawer.hpp" />
+    <ClInclude Include="..\source\lib\Color.hpp" />
     <ClInclude Include="..\source\lib\Expression.hpp" />
     <ClInclude Include="..\source\lib\ExpressionBuilder.hpp" />
     <ClInclude Include="..\source\lib\ExpressionGrammar.hpp" />
+    <ClInclude Include="..\source\lib\Figure.hpp" />
+    <ClInclude Include="..\source\lib\GeometricTypes.hpp" />
+    <ClInclude Include="..\source\lib\ICanvas.hpp" />
+    <ClInclude Include="..\source\lib\Line.hpp" />
     <ClInclude Include="..\source\lib\ParseException.hpp" />
     <ClInclude Include="..\source\lib\Parser.hpp" />
+    <ClInclude Include="..\source\lib\PointTransform.hpp" />
+    <ClInclude Include="..\source\lib\Range.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\source\lib\Drawer.cpp" />
+    <ClCompile Include="..\source\lib\Color.cpp" />
+    <ClCompile Include="..\source\lib\Line.cpp" />
     <ClCompile Include="..\source\lib\ParseException.cpp" />
     <ClCompile Include="..\source\lib\Parser.cpp" />
   </ItemGroup>
