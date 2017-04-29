@@ -4,7 +4,7 @@
 #include "Expression.hpp"
 #include "ExpressionBuilder.hpp"
 
-namespace funcdraw
+namespace funcdraw { namespace expression
 {
 	namespace qi = boost::spirit::qi;
 	namespace ascii = boost::spirit::ascii;
@@ -48,4 +48,4 @@ namespace funcdraw
 			variable = char_('x')[_val = makeVariable()];
 		}
 	};
-}
+}}

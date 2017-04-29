@@ -13,30 +13,45 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\expression">
+      <UniqueIdentifier>{36b2087f-ec81-4909-ba86-c4624037d8e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\expression">
+      <UniqueIdentifier>{1963e760-250c-401a-9df0-9334945e07ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\drawing">
+      <UniqueIdentifier>{12ea101e-3fa4-48f7-8395-5b9bcf27060e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\source\test\drawing\RangeTest.cpp">
+      <Filter>Source Files\drawing</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\test\expression\EvaluateTest.cpp">
+      <Filter>Source Files\expression</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\test\expression\ExpressionBuilderTest.cpp">
+      <Filter>Source Files\expression</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\test\expression\ExpressionTest.cpp">
+      <Filter>Source Files\expression</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\test\expression\ParserTest.cpp">
+      <Filter>Source Files\expression</Filter>
+    </ClCompile>
     <ClCompile Include="..\source\test\TestMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\test\ExpressionBuilderTest.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="..\source\test\drawing\LineTest.cpp">
+      <Filter>Source Files\drawing</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\test\ExpressionTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\test\ParserTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\test\EvaluateTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\test\RangeTest.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="..\source\test\drawing\PointTransformTest.cpp">
+      <Filter>Source Files\drawing</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\source\test\HelperFunctions.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\source\test\expression\HelperFunctions.hpp">
+      <Filter>Header Files\expression</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

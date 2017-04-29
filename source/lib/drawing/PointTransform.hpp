@@ -1,8 +1,7 @@
 #pragma once
-#include "Line.hpp"
 #include "GeometricTypes.hpp"
 
-namespace funcdraw
+namespace funcdraw { namespace drawing
 {
 	class PointTransform
 	{
@@ -15,7 +14,7 @@ namespace funcdraw
 			: transformation(transformation) {}
 
 	public:
-		PointTransform() : transformation(boost::numeric::ublas::identity_matrix<double>(2)) {}
+		PointTransform() : transformation(boost::numeric::ublas::identity_matrix<double>(3)) {}
 
 		PointTransform(double minX, double maxX, double minY, double maxY)
 		{
@@ -25,7 +24,7 @@ namespace funcdraw
 			auto yMid = minY + yLen / 2;
 
 			transformation = Transformation(prod(
-				Scaling(xLen / 2, yLen / 2).matrix(),
+				Scaling(2 / xLen, 2 / yLen).matrix(),
 				Translation(-xMid, -yMid).matrix()
 			));
 		}
@@ -53,4 +52,4 @@ namespace funcdraw
 			return temp;
 		}
 	};
-}
+}}

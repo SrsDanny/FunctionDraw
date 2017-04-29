@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
-#include "Expression.hpp"
-#include "Parser.hpp"
+#include <expression/Expression.hpp>
+#include <expression/Parser.hpp>
 
-using namespace funcdraw;
+using namespace funcdraw::expression;
 
 namespace test
 {

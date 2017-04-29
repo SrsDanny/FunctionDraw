@@ -1,10 +1,9 @@
 #include <gtest/gtest.h>
-#include <Parser.hpp>
-#include <string>
+#include <expression/Parser.hpp>
 #include "HelperFunctions.hpp"
-#include "ParseException.hpp"
+#include <expression/ParseException.hpp>
 
-using namespace funcdraw;
+using namespace funcdraw::expression;
 
 namespace test
 {

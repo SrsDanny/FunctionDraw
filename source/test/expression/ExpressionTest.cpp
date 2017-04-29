@@ -1,5 +1,7 @@
 #include <gtest/gtest.h>
-#include "Expression.hpp"
+#include <expression/Expression.hpp>
+
+using namespace funcdraw::expression;
 
 namespace test
 {
@@ -8,51 +10,51 @@ namespace test
 	class ExpressionTest : public ::testing::TestWithParam<NumberPairs>
 	{
 	public:
-		funcdraw::Expression::ptr c1_, c2_;
+		Expression::ptr c1_, c2_;
 
 		ExpressionTest()
-			: c1_(std::make_shared<funcdraw::Constant>(GetParam().first)),
-			  c2_(std::make_shared<funcdraw::Constant>(GetParam().second))
+			: c1_(std::make_shared<Constant>(GetParam().first)),
+			  c2_(std::make_shared<Constant>(GetParam().second))
 		{}
 	};
 
 	TEST_P(ExpressionTest, VariableTest)
 	{
-		funcdraw::Variable v;
+		Variable v;
 		EXPECT_EQ(GetParam().first, v.evaluate(GetParam().first));
 	}
 
 	TEST_P(ExpressionTest, ConstantTest)
 	{
-		funcdraw::Constant c(GetParam().first);
+		Constant c(GetParam().first);
 		EXPECT_EQ(GetParam().first, c.getValue());
 		EXPECT_EQ(GetParam().first, c.evaluate(GetParam().second));
 	}
 
 	TEST_P(ExpressionTest, SumTest)
 	{
-		funcdraw::Sum s(c1_, c2_);
+		Sum s(c1_, c2_);
 		EXPECT_EQ(GetParam().first + GetParam().second,
 			s.evaluate(GetParam().first));
 	}
 
 	TEST_P(ExpressionTest, SubtractTest)
 	{
-		funcdraw::Subtract s(c1_, c2_);
+		Subtract s(c1_, c2_);
 		EXPECT_EQ(GetParam().first - GetParam().second,
 			s.evaluate(GetParam().first));
 	}
 
 	TEST_P(ExpressionTest, MultiplyTest)
 	{
-		funcdraw::Multiply s(c1_, c2_);
+		Multiply s(c1_, c2_);
 		EXPECT_EQ(GetParam().first * GetParam().second,
 			s.evaluate(GetParam().first));
 	}
 
 	TEST_P(ExpressionTest, DivideTest)
 	{
-		funcdraw::Divide s(c1_, c2_);
+		Divide s(c1_, c2_);
 		EXPECT_EQ(GetParam().first / GetParam().second,
 			s.evaluate(GetParam().first));
 	}

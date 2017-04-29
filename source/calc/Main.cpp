@@ -1,10 +1,10 @@
-#include <Parser.hpp>
+#include <expression/Parser.hpp>
 #include <iostream>
 #include <string>
-#include "ParseException.hpp"
+#include <expression/ParseException.hpp>
 
 using namespace std;
-using namespace funcdraw;
+using namespace funcdraw::expression;
 
 int main(int argc, char* argv[])
 {

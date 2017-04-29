@@ -1,9 +1,7 @@
 #pragma once
 #include <vector>
 
-
-
-namespace funcdraw
+namespace funcdraw { namespace drawing
 {
 	class Range
 	{
@@ -18,11 +16,11 @@ namespace funcdraw
 			using pointer = double*;
 
 		private:
-			Range& range;
+			const Range& range;
 			int pos;
 
 		public:
-			Iterator(Range& range, int pos)
+			Iterator(const Range& range, int pos)
 				: range(range), pos(pos) {}
 
 			double operator*() const
@@ -57,7 +55,7 @@ namespace funcdraw
 	public:
 		Range(double from, double to, int num = 100)
 			: from(from), to(to),
-			  num(num), step((to - from) / num)
+				num(num), step((to - from) / num)
 		{
 			if (from >= to)
 				throw std::invalid_argument("'from' must be less than 'to'");
@@ -65,15 +63,14 @@ namespace funcdraw
 				throw std::invalid_argument("'num' can not be 0");
 		}
 
-		Iterator begin()
+		Iterator begin() const
 		{
 			return Iterator(*this, 0);
 		}
 
-		Iterator end()
+		Iterator end() const
 		{
 			return Iterator(*this, num);
 		}
 	};
-}
-
+}}

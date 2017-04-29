@@ -2,7 +2,7 @@
 #include "Expression.hpp"
 #include <exception>
 
-namespace funcdraw
+namespace funcdraw { namespace expression
 {
 	namespace ExpressionBuilder
 	{
@@ -42,4 +42,4 @@ namespace funcdraw
 			}
 		};
 	}
-}
+}}

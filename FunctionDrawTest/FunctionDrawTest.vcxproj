@@ -27,15 +27,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\source\test\EvaluateTest.cpp" />
-    <ClCompile Include="..\source\test\ExpressionBuilderTest.cpp" />
-    <ClCompile Include="..\source\test\ExpressionTest.cpp" />
-    <ClCompile Include="..\source\test\ParserTest.cpp" />
-    <ClCompile Include="..\source\test\RangeTest.cpp" />
+    <ClCompile Include="..\source\test\drawing\LineTest.cpp" />
+    <ClCompile Include="..\source\test\drawing\PointTransformTest.cpp" />
+    <ClCompile Include="..\source\test\drawing\RangeTest.cpp" />
+    <ClCompile Include="..\source\test\expression\EvaluateTest.cpp" />
+    <ClCompile Include="..\source\test\expression\ExpressionBuilderTest.cpp" />
+    <ClCompile Include="..\source\test\expression\ExpressionTest.cpp" />
+    <ClCompile Include="..\source\test\expression\ParserTest.cpp" />
     <ClCompile Include="..\source\test\TestMain.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\source\test\HelperFunctions.hpp" />
+    <ClInclude Include="..\source\test\expression\HelperFunctions.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{7A63F680-D02C-423C-94D3-F332A007E479}</ProjectGuid>

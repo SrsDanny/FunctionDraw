@@ -2,11 +2,11 @@
 #include <string>
 #include "Expression.hpp"
 
-namespace funcdraw
+namespace funcdraw { namespace expression
 {
 	class Parser
 	{
 	public:
 		static Expression::ptr parse(const std::string& expressionStr);
 	};
-}
+}}

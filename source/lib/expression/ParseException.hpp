@@ -2,7 +2,7 @@
 #include <exception>
 #include <string>
 
-namespace funcdraw
+namespace funcdraw { namespace expression
 {
 	class ParseException : std::exception
 	{
@@ -31,4 +31,4 @@ namespace funcdraw
 		std::string getContext() const { return context; }
 		size_t getIndex() const { return index; }
 	};
-}
+}}

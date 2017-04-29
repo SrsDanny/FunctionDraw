@@ -19,24 +19,25 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\source\lib\Color.hpp" />
-    <ClInclude Include="..\source\lib\Expression.hpp" />
-    <ClInclude Include="..\source\lib\ExpressionBuilder.hpp" />
-    <ClInclude Include="..\source\lib\ExpressionGrammar.hpp" />
-    <ClInclude Include="..\source\lib\Figure.hpp" />
-    <ClInclude Include="..\source\lib\GeometricTypes.hpp" />
-    <ClInclude Include="..\source\lib\ICanvas.hpp" />
-    <ClInclude Include="..\source\lib\Line.hpp" />
-    <ClInclude Include="..\source\lib\ParseException.hpp" />
-    <ClInclude Include="..\source\lib\Parser.hpp" />
-    <ClInclude Include="..\source\lib\PointTransform.hpp" />
-    <ClInclude Include="..\source\lib\Range.hpp" />
+    <ClInclude Include="..\source\lib\drawing\Color.hpp" />
+    <ClInclude Include="..\source\lib\drawing\Figure.hpp" />
+    <ClInclude Include="..\source\lib\drawing\GeometricTypes.hpp" />
+    <ClInclude Include="..\source\lib\drawing\ICanvas.hpp" />
+    <ClInclude Include="..\source\lib\drawing\Line.hpp" />
+    <ClInclude Include="..\source\lib\drawing\PointTransform.hpp" />
+    <ClInclude Include="..\source\lib\drawing\Range.hpp" />
+    <ClInclude Include="..\source\lib\expression\Expression.hpp" />
+    <ClInclude Include="..\source\lib\expression\ExpressionBuilder.hpp" />
+    <ClInclude Include="..\source\lib\expression\ExpressionGrammar.hpp" />
+    <ClInclude Include="..\source\lib\expression\ParseException.hpp" />
+    <ClInclude Include="..\source\lib\expression\Parser.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\source\lib\Color.cpp" />
-    <ClCompile Include="..\source\lib\Line.cpp" />
-    <ClCompile Include="..\source\lib\ParseException.cpp" />
-    <ClCompile Include="..\source\lib\Parser.cpp" />
+    <ClCompile Include="..\source\lib\drawing\Color.cpp" />
+    <ClCompile Include="..\source\lib\drawing\Figure.cpp" />
+    <ClCompile Include="..\source\lib\drawing\Line.cpp" />
+    <ClCompile Include="..\source\lib\expression\ParseException.cpp" />
+    <ClCompile Include="..\source\lib\expression\Parser.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{91C61C7C-170F-49A5-B40C-9A11AC28B501}</ProjectGuid>
@@ -109,7 +110,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Work\lib\boost_1_62_0\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)source\lib;C:\Work\lib\boost_1_62_0\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>

@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
-#include <Range.hpp>
+#include <drawing/Range.hpp>
 
-using namespace funcdraw;
+using namespace funcdraw::drawing;
 
 namespace test
 {

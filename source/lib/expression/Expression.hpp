@@ -1,7 +1,7 @@
 #pragma once
 #include <memory>
 
-namespace funcdraw
+namespace funcdraw { namespace expression
 {
 	class Expression
 	{
@@ -9,10 +9,9 @@ namespace funcdraw
 		using ptr = std::shared_ptr<Expression>;
 		
 		virtual ~Expression() {}
-
-		virtual double evaluate(double x) = 0;
-
-		double operator()(double x) { return evaluate(x); }
+		virtual double evaluate(double x) const = 0;
+		
+		double operator()(double x) const { return evaluate(x); }
 	};
 
 	class Constant final : public Expression
@@ -24,15 +23,14 @@ namespace funcdraw
 			: value(value)
 		{}
 
-		double evaluate(double x) override { return value; }
-
+		double evaluate(double x) const override { return value; }
 		double getValue() const { return value; }
 	};
 
 	class Variable final : public Expression
 	{
 	public:
-		double evaluate(double x) override 
+		double evaluate(double x) const override 
 		{
 			return x;
 		}
@@ -40,7 +38,7 @@ namespace funcdraw
 
 	class TwoOperand : public Expression
 	{
-		virtual double doOperation(double lhs, double rhs) = 0;
+		virtual double doOperation(double lhs, double rhs) const = 0;
 
 	protected:
 		ptr lhs;
@@ -52,7 +50,7 @@ namespace funcdraw
 			  rhs(expression1)
 		{}
 
-		double evaluate(double x) override
+		double evaluate(double x) const override
 		{
 			return doOperation(lhs->evaluate(x), rhs->evaluate(x));
 		}
@@ -65,7 +63,7 @@ namespace funcdraw
 	{
 		using TwoOperand::TwoOperand;
 
-		double doOperation(double lhs, double rhs) override
+		double doOperation(double lhs, double rhs) const override
 		{
 			return lhs + rhs;
 		}
@@ -75,7 +73,7 @@ namespace funcdraw
 	{
 		using TwoOperand::TwoOperand;
 
-		double doOperation(double lhs, double rhs) override
+		double doOperation(double lhs, double rhs) const override
 		{
 			return lhs - rhs;
 		}
@@ -85,7 +83,7 @@ namespace funcdraw
 	{
 		using TwoOperand::TwoOperand;
 
-		double doOperation(double lhs, double rhs) override
+		double doOperation(double lhs, double rhs) const override
 		{
 			return lhs * rhs;
 		}
@@ -95,9 +93,9 @@ namespace funcdraw
 	{
 		using TwoOperand::TwoOperand;
 
-		double doOperation(double lhs, double rhs) override
+		double doOperation(double lhs, double rhs) const override
 		{
 			return lhs / rhs;
 		}
 	};
-}
+}}

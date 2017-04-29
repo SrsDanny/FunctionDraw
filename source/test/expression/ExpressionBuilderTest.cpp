@@ -1,10 +1,10 @@
 #include <gtest/gtest.h>
 #include <memory>
-#include "ExpressionBuilder.hpp"
-#include "Expression.hpp"
+#include <expression/ExpressionBuilder.hpp>
+#include <expression/Expression.hpp>
 #include "HelperFunctions.hpp"
 
-using namespace funcdraw;
+using namespace funcdraw::expression;
 
 namespace test
 {
@@ -16,8 +16,7 @@ namespace test
 	};
 
 	template<typename T>
-	class ExpressionBuilderTest : public testing::Test
-	{};
+	class ExpressionBuilderTest : public testing::Test{};
 
 	typedef testing::Types
 	<
