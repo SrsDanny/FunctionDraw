@@ -20,5 +20,15 @@ namespace funcdraw { namespace drawing
 		static const Color YELLOW;
 		static const Color PURPLE;
 		static const Color CYAN;
+
+
+		bool operator==(const Color& rhs) const
+		{
+			return r == rhs.r
+				&& g == rhs.g
+				&& b == rhs.b;
+		}
+
+		bool operator!=(const Color& rhs) const { return !(*this == rhs); }
 	};
 }}

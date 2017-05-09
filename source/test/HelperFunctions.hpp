@@ -33,3 +33,16 @@ namespace test
 		EXPECT_NEAR(lhs.y(), rhs.y(), eps);
 	}
 }
+
+namespace boost { namespace geometry { namespace model { namespace d2
+{
+	inline bool operator==(const point_xy<double>& lhs, const point_xy<double>& rhs)
+	{
+		return lhs.x() == rhs.x() && lhs.y() == rhs.y();
+	}
+
+	inline bool operator!=(const point_xy<double>& lhs, const point_xy<double>& rhs)
+	{
+		return lhs.x() != rhs.x() || lhs.y() != rhs.y();
+	}
+}}}}

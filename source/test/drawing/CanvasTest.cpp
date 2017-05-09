@@ -7,6 +7,7 @@
 #include "drawing/Figure.hpp"
 #include "drawing/Range.hpp"
 #include <string>
+#include "HelperFunctions.hpp"
 
 using namespace funcdraw::drawing;
 using namespace std::string_literals;
@@ -26,11 +27,11 @@ namespace test
 				const PointTransform& figureTransform));
 	};
 
-	class EqTransform
+	class TransformEq
 	{
 		boost::numeric::ublas::matrix<double> matrix;
 	public:
-		explicit EqTransform(const PointTransform& transformation)
+		explicit TransformEq(const PointTransform& transformation)
 			: matrix(transformation.getTransformation().matrix()) {}
 
 		bool operator()(const PointTransform& other) const
@@ -49,18 +50,47 @@ namespace test
 		}
 	};
 
+	class MultiLineEq
+	{
+		MultiLine multiLine;
+
+	public:
+		explicit MultiLineEq(const MultiLine& multiLine): multiLine(multiLine) {}
+
+		bool operator()(const MultiLine& other) const 
+		{
+			if (multiLine.size() != other.size())
+				return false;
+
+			for(auto i = 0; i < multiLine.size(); ++i)
+			{
+				if (static_cast<const std::vector<Point>&>(multiLine[i]) != static_cast<const std::vector<Point>&>(other[i]))
+					return false;
+			}
+			return true;
+		}
+	};
+
 	TEST(CanvasTest, DrawLineTest)
 	{
 		MockCanvas canvas;
 		Figure figure;
-		;
 
-		figure.addFunction("3*x"s);
-		figure.addFunction([](double x) {return 100; });
+		figure.addFunction("3*x"s, Color::PURPLE);
+		figure.addFunction([](double x) {return 100; }, Color::CYAN);
+		figure.addFunction([](double x) {return -x; }, Color::GREEN);
 		
-		EXPECT_CALL(canvas, drawLines(_, _, Truly(EqTransform(PointTransform(-1, 2, -3, 100)))))
+		EXPECT_CALL(canvas, 
+			drawLines(
+				Truly(MultiLineEq({
+						{ { -1., -3. }, { 0., 0. }, { 1., 3. }, { 2., 6. }},
+						{ { -1., 100 }, { 0., 100 }, { 1., 100 }, { 2., 100 } },
+						{ { -1., 1 }, { 0., 0 }, { 1., -1 }, { 2., -2 } }
+						})), 
+				std::vector<Color>{ Color::PURPLE, Color::CYAN, Color::GREEN },
+				Truly(TransformEq(PointTransform(-1, 2, -3, 100)))))
 			.Times(1);
 
-		figure.draw(canvas, Range(-1, 2, 3));
+		figure.draw(canvas, Range(-1, 2, 4));
 	}
 }
