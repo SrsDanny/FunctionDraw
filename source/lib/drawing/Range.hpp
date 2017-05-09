@@ -36,6 +36,12 @@ namespace funcdraw { namespace drawing
 				return *this;
 			}
 
+			Iterator& operator--()
+			{
+				--pos;
+				return *this;
+			}
+
 			bool operator==(const Iterator& other) const
 			{
 				return &range == &other.range && pos == other.pos;
@@ -53,9 +59,12 @@ namespace funcdraw { namespace drawing
 		double step;
 
 	public:
+		using value_type = double;
+		using const_iterator = Iterator;
+
 		Range(double from, double to, int num = 100)
 			: from(from), to(to),
-				num(num), step((to - from) / num)
+				num(num), step((to - from) / (num - 1))
 		{
 			if (from >= to)
 				throw std::invalid_argument("'from' must be less than 'to'");

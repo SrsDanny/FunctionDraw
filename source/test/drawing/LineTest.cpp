@@ -1,8 +1,10 @@
 #include <gtest/gtest.h>
-#include <drawing/Line.hpp>
+#include <drawing/LineBuilder.hpp>
 #include <list>
 #include <vector>
 #include <expression/Parser.hpp>
+#include <HelperFunctions.hpp>
+#include "drawing/Range.hpp"
 
 using namespace funcdraw::drawing;
 using namespace funcdraw::expression;
@@ -32,7 +34,7 @@ namespace test
 	{
 		std::vector<double> v{ 1, 2, 3, 4, 5 };
 		auto mySin = static_cast<double(*)(double)>(sin);
-		Line line(mySin, v);
+		auto line = lineBuilder::build(mySin, v);
 		equals(v, line, mySin);
 	}
 
@@ -40,7 +42,7 @@ namespace test
 	{
 		std::list<double> l{ 1, 2, 3, 4, 5 };
 		auto myLambda = [](double x) {return x * 2 + 1; };
-		Line line(myLambda, l);
+		auto line = lineBuilder::build(myLambda, l);
 		equals(l, line, myLambda);
 	}
 
@@ -48,7 +50,7 @@ namespace test
 	{
 		Range range(1, 10, 67);
 		auto expr = Parser::parse("(12 + x) * 5");
-		Line line(*expr, range);
+		auto line = lineBuilder::build(*expr, range);
 		equals(range, line, *expr);
 	}
 }

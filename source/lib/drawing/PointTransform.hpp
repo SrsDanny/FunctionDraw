@@ -20,12 +20,10 @@ namespace funcdraw { namespace drawing
 		{
 			auto xLen = maxX - minX;
 			auto yLen = maxY - minY;
-			auto xMid = minX + xLen / 2;
-			auto yMid = minY + yLen / 2;
 
 			transformation = Transformation(prod(
-				Scaling(2 / xLen, 2 / yLen).matrix(),
-				Translation(-xMid, -yMid).matrix()
+				Scaling(1 / xLen, 1 / yLen).matrix(),
+				Translation(-minX, -minY).matrix()
 			));
 		}
 
@@ -50,6 +48,11 @@ namespace funcdraw { namespace drawing
 			Point temp;
 			boost::geometry::transform(point, temp, transformation);
 			return temp;
+		}
+
+		const Transformation& getTransformation() const
+		{
+			return transformation;
 		}
 	};
 }}

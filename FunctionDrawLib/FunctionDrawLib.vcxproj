@@ -23,7 +23,7 @@
     <ClInclude Include="..\source\lib\drawing\Figure.hpp" />
     <ClInclude Include="..\source\lib\drawing\GeometricTypes.hpp" />
     <ClInclude Include="..\source\lib\drawing\ICanvas.hpp" />
-    <ClInclude Include="..\source\lib\drawing\Line.hpp" />
+    <ClInclude Include="..\source\lib\drawing\LineBuilder.hpp" />
     <ClInclude Include="..\source\lib\drawing\PointTransform.hpp" />
     <ClInclude Include="..\source\lib\drawing\Range.hpp" />
     <ClInclude Include="..\source\lib\expression\Expression.hpp" />
@@ -35,7 +35,6 @@
   <ItemGroup>
     <ClCompile Include="..\source\lib\drawing\Color.cpp" />
     <ClCompile Include="..\source\lib\drawing\Figure.cpp" />
-    <ClCompile Include="..\source\lib\drawing\Line.cpp" />
     <ClCompile Include="..\source\lib\expression\ParseException.cpp" />
     <ClCompile Include="..\source\lib\expression\Parser.cpp" />
   </ItemGroup>

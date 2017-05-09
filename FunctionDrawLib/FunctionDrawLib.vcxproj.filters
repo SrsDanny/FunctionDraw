@@ -39,9 +39,6 @@
     <ClInclude Include="..\source\lib\drawing\ICanvas.hpp">
       <Filter>Header Files\drawing</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\lib\drawing\Line.hpp">
-      <Filter>Header Files\drawing</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\lib\drawing\PointTransform.hpp">
       <Filter>Header Files\drawing</Filter>
     </ClInclude>
@@ -63,12 +60,12 @@
     <ClInclude Include="..\source\lib\expression\Parser.hpp">
       <Filter>Header Files\expression</Filter>
     </ClInclude>
+    <ClInclude Include="..\source\lib\drawing\LineBuilder.hpp">
+      <Filter>Header Files\drawing</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\source\lib\drawing\Color.cpp">
-      <Filter>Source Files\drawing</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\lib\drawing\Line.cpp">
       <Filter>Source Files\drawing</Filter>
     </ClCompile>
     <ClCompile Include="..\source\lib\expression\ParseException.cpp">

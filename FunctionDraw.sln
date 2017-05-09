@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gtest", "..\lib\googletest\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Calc", "Calc\Calc.vcxproj", "{ACA52D18-B997-48B9-8AAF-07751E2A6DC3}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gmock", "..\lib\googletest\build\googlemock\gmock.vcxproj", "{3C9F37B0-7EA2-3475-998A-E52066903A32}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -83,6 +85,18 @@ Global
 		{ACA52D18-B997-48B9-8AAF-07751E2A6DC3}.RelWithDebInfo|x64.Build.0 = Release|x64
 		{ACA52D18-B997-48B9-8AAF-07751E2A6DC3}.RelWithDebInfo|x86.ActiveCfg = Release|Win32
 		{ACA52D18-B997-48B9-8AAF-07751E2A6DC3}.RelWithDebInfo|x86.Build.0 = Release|Win32
+		{3C9F37B0-7EA2-3475-998A-E52066903A32}.Debug|x64.ActiveCfg = Debug|x64
+		{3C9F37B0-7EA2-3475-998A-E52066903A32}.Debug|x64.Build.0 = Debug|x64
+		{3C9F37B0-7EA2-3475-998A-E52066903A32}.Debug|x86.ActiveCfg = Debug|x64
+		{3C9F37B0-7EA2-3475-998A-E52066903A32}.MinSizeRel|x64.ActiveCfg = MinSizeRel|x64
+		{3C9F37B0-7EA2-3475-998A-E52066903A32}.MinSizeRel|x64.Build.0 = MinSizeRel|x64
+		{3C9F37B0-7EA2-3475-998A-E52066903A32}.MinSizeRel|x86.ActiveCfg = MinSizeRel|x64
+		{3C9F37B0-7EA2-3475-998A-E52066903A32}.Release|x64.ActiveCfg = Release|x64
+		{3C9F37B0-7EA2-3475-998A-E52066903A32}.Release|x64.Build.0 = Release|x64
+		{3C9F37B0-7EA2-3475-998A-E52066903A32}.Release|x86.ActiveCfg = Release|x64
+		{3C9F37B0-7EA2-3475-998A-E52066903A32}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|x64
+		{3C9F37B0-7EA2-3475-998A-E52066903A32}.RelWithDebInfo|x64.Build.0 = RelWithDebInfo|x64
+		{3C9F37B0-7EA2-3475-998A-E52066903A32}.RelWithDebInfo|x86.ActiveCfg = RelWithDebInfo|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
