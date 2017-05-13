@@ -48,13 +48,13 @@ set(UNIT_TESTS_SOURCES
 )
 
 set(UNIT_TESTS_HEADERS
-  HelperFunctions.hpp
+  HelperFunctions.h
 )
 
 source_group("Source Files\\drawing" REGULAR_EXPRESSION "drawing/.*\\.cpp")
 source_group("Source Files\\expression" REGULAR_EXPRESSION "expression/.*\\.cpp")
-source_group("Header Files\\drawing" REGULAR_EXPRESSION "drawing/.*\\.hpp")
-source_group("Header Files\\expression" REGULAR_EXPRESSION "expression/.*\\.hpp")
+source_group("Header Files\\drawing" REGULAR_EXPRESSION "drawing/.*\\.h")
+source_group("Header Files\\expression" REGULAR_EXPRESSION "expression/.*\\.h")
 
 add_executable(UnitTest ${UNIT_TESTS_SOURCES} ${UNIT_TESTS_HEADERS})
 target_include_directories(UnitTest PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

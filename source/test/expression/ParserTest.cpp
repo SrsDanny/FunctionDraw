@@ -1,9 +1,9 @@
 #include <gtest/gtest.h>
-#include <expression/Parser.hpp>
-#include "expression/Parser.hpp"
-#include "HelperFunctions.hpp"
-#include <expression/ParseException.hpp>
-#include "expression/ParseException.hpp"
+#include "expression/Parser.h"
+#include "expression/Parser.h"
+#include "HelperFunctions.h"
+#include "expression/ParseException.h"
+#include "expression/ParseException.h"
 
 using namespace funcdraw::expression;
 
@@ -24,12 +24,12 @@ namespace test
 	{
 		std::string expressionStr = "(1 + x) * 2 + 3 / x";
 		auto expression = Parser::parse(expressionStr);
-		
+
 		auto topSum = dynamicCastAndAssertNotNull<Sum>(expression); // (1 + x) * 2 + 3 / x
 		auto multiply = dynamicCastAndAssertNotNull<Multiply>(topSum->getLhs()); // (1 + x) * 2
 		auto divide = dynamicCastAndAssertNotNull<Divide>(topSum->getRhs()); // 3 / x
 		auto leftSum = dynamicCastAndAssertNotNull<Sum>(multiply->getLhs()); // 1 + x
-		
+
 		dynamicCastAndAssertNotNull<Constant>(multiply->getRhs()); // 2
 		dynamicCastAndAssertNotNull<Constant>(leftSum->getLhs()); // 1
 		dynamicCastAndAssertNotNull<Variable>(leftSum->getRhs()); // x
@@ -52,7 +52,7 @@ namespace test
 	INSTANTIATE_TEST_CASE_P(InvalidExpressionsTest,
 		ParserTest,
 		testing::Values(
-			"foo", 
+			"foo",
 			"bar",
 			"42 + bar",
 			"42 + (bar - 12)",

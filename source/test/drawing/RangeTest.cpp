@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <drawing/Range.hpp>
+#include "drawing/Range.h"
 #include <gmock/gmock.h>
 
 using namespace funcdraw::drawing;

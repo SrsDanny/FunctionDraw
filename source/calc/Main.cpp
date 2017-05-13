@@ -1,7 +1,7 @@
-#include <expression/Parser.hpp>
+#include "expression/Parser.h"
 #include <iostream>
 #include <string>
-#include <expression/ParseException.hpp>
+#include "expression/ParseException.h"
 
 using namespace std;
 using namespace funcdraw::expression;

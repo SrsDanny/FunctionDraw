@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "expression/Expression.hpp"
+#include "expression/Expression.h"
 
 using namespace funcdraw::expression;
 
@@ -67,5 +67,5 @@ namespace test
 				{3.14, 2.71},
 				{-1.25, -5.78}
 				}));
-				
+
 }

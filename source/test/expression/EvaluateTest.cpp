@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
-#include "expression/Expression.hpp"
-#include "expression/Parser.hpp"
+#include "expression/Expression.h"
+#include "expression/Parser.h"
 
 using namespace funcdraw::expression;
 

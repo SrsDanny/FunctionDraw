@@ -1,5 +1,5 @@
 #pragma once
-#include "Color.hpp"
+#include "Color.h"
 
 namespace funcdraw { namespace drawing
 {

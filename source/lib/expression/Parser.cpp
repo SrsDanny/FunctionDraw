@@ -1,8 +1,8 @@
-#include "Parser.hpp"
+#include "Parser.h"
 #include <boost/spirit/include/qi.hpp>
 #include <string>
-#include "ExpressionGrammar.hpp"
-#include "ParseException.hpp"
+#include "ExpressionGrammar.h"
+#include "ParseException.h"
 
 namespace qi = boost::spirit::qi;
 namespace ascii = boost::spirit::ascii;

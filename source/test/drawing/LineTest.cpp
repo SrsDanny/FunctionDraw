@@ -1,10 +1,10 @@
 #include <gtest/gtest.h>
-#include "drawing/LineBuilder.hpp"
+#include "drawing/LineBuilder.h"
 #include <list>
 #include <vector>
-#include "expression/Parser.hpp"
-#include "HelperFunctions.hpp"
-#include "drawing/Range.hpp"
+#include "expression/Parser.h"
+#include "HelperFunctions.h"
+#include "drawing/Range.h"
 
 using namespace funcdraw::drawing;
 using namespace funcdraw::expression;

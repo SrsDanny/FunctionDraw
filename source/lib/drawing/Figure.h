@@ -1,10 +1,10 @@
 #pragma once
-#include "PointTransform.hpp"
-#include "expression/Expression.hpp"
-#include "expression/Parser.hpp"
-#include "expression/ParseException.hpp"
-#include "ICanvas.hpp"
-#include "Color.hpp"
+#include "PointTransform.h"
+#include "expression/Expression.h"
+#include "expression/Parser.h"
+#include "expression/ParseException.h"
+#include "ICanvas.h"
+#include "Color.h"
 
 namespace funcdraw { namespace drawing
 {
@@ -29,7 +29,7 @@ namespace funcdraw { namespace drawing
 				color
 			});
 		}
-		
+
 		void addFunction(std::string expression, Color color = Color::BLUE)
 		{
 			auto expr = expression::Parser::parse(expression);

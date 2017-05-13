@@ -1,7 +1,7 @@
-#include "Figure.hpp"
-#include "Range.hpp"
+#include "Figure.h"
+#include "Range.h"
 #include <boost/geometry.hpp>
-#include "LineBuilder.hpp"
+#include "LineBuilder.h"
 
 using namespace std;
 namespace bg = boost::geometry;

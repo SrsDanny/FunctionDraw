@@ -1,5 +1,5 @@
 #pragma once
-#include "GeometricTypes.hpp"
+#include "GeometricTypes.h"
 
 namespace funcdraw { namespace drawing
 {
@@ -30,7 +30,7 @@ namespace funcdraw { namespace drawing
 		void appendScaling(double scaleX, double scaleY)
 		{
 			transformation = Transformation(
-				prod(Scaling(scaleX, scaleY).matrix(), 
+				prod(Scaling(scaleX, scaleY).matrix(),
 					transformation.matrix()
 				));
 		}

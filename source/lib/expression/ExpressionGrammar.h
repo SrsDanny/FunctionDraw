@@ -1,8 +1,8 @@
 #pragma once
 #include <boost/spirit/include/qi.hpp>
 #include <boost/spirit/include/phoenix.hpp>
-#include "Expression.hpp"
-#include "ExpressionBuilder.hpp"
+#include "Expression.h"
+#include "ExpressionBuilder.h"
 
 namespace funcdraw { namespace expression
 {

@@ -1,7 +1,7 @@
 #pragma once
 #include <gtest/gtest.h>
 #include <memory>
-#include "drawing/GeometricTypes.hpp"
+#include "drawing/GeometricTypes.h"
 
 namespace test
 {

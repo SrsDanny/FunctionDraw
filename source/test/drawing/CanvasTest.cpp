@@ -1,13 +1,13 @@
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
-#include "drawing/GeometricTypes.hpp"
-#include "drawing/Color.hpp"
-#include "drawing/PointTransform.hpp"
-#include "drawing/ICanvas.hpp"
-#include "drawing/Figure.hpp"
-#include "drawing/Range.hpp"
+#include "drawing/GeometricTypes.h"
+#include "drawing/Color.h"
+#include "drawing/PointTransform.h"
+#include "drawing/ICanvas.h"
+#include "drawing/Figure.h"
+#include "drawing/Range.h"
 #include <string>
-#include "HelperFunctions.hpp"
+#include "HelperFunctions.h"
 
 using namespace funcdraw::drawing;
 
@@ -56,7 +56,7 @@ namespace test
 	public:
 		explicit MultiLineEq(const MultiLine& multiLine): multiLine(multiLine) {}
 
-		bool operator()(const MultiLine& other) const 
+		bool operator()(const MultiLine& other) const
 		{
 			if (multiLine.size() != other.size())
 				return false;
@@ -78,7 +78,7 @@ namespace test
 		figure.addFunction(std::string("3*x"), Color::PURPLE);
 		figure.addFunction([](double x) {return 100; }, Color::CYAN);
 		figure.addFunction([](double x) {return -x; }, Color::GREEN);
-		
+
 		MultiLine multiLine;
 		Line line;
 		line.push_back(Point(-1., -3.));
@@ -101,9 +101,9 @@ namespace test
 		line.push_back(Point(2., -2.));
 		multiLine.push_back(move(line));
 
-		EXPECT_CALL(canvas, 
+		EXPECT_CALL(canvas,
 			drawLines(
-				Truly(MultiLineEq(multiLine)), 
+				Truly(MultiLineEq(multiLine)),
 				std::vector<Color>{ Color::PURPLE, Color::CYAN, Color::GREEN },
 				Truly(TransformEq(PointTransform(-1, 2, -3, 100)))))
 			.Times(1);

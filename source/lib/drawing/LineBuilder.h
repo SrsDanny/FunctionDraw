@@ -1,5 +1,5 @@
 #pragma once
-#include "GeometricTypes.hpp"
+#include "GeometricTypes.h"
 
 namespace funcdraw { namespace drawing
 {
@@ -7,7 +7,7 @@ namespace funcdraw { namespace drawing
 	{
 		template<typename Function, typename Iterable,
 			typename = typename std::enable_if<
-				std::is_convertible<decltype(std::declval<Function>()(std::declval<double>())), 
+				std::is_convertible<decltype(std::declval<Function>()(std::declval<double>())),
 				double>::value>::type,
 			typename = decltype(std::declval<Iterable>().begin()),
 			typename = decltype(std::declval<Iterable>().end())
