@@ -47,6 +47,15 @@ set(UNIT_TESTS_SOURCES
   TestMain.cpp
 )
 
-add_executable(UnitTest ${UNIT_TESTS_SOURCES})
+set(UNIT_TESTS_HEADERS
+  HelperFunctions.hpp
+)
+
+source_group("Source Files\\drawing" REGULAR_EXPRESSION "drawing/.*\\.cpp")
+source_group("Source Files\\expression" REGULAR_EXPRESSION "expression/.*\\.cpp")
+source_group("Header Files\\drawing" REGULAR_EXPRESSION "drawing/.*\\.hpp")
+source_group("Header Files\\expression" REGULAR_EXPRESSION "expression/.*\\.hpp")
+
+add_executable(UnitTest ${UNIT_TESTS_SOURCES} ${UNIT_TESTS_HEADERS})
 target_include_directories(UnitTest PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(UnitTest FuncDrawLib gmock gtest)
