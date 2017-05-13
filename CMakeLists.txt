@@ -5,6 +5,11 @@ project(FunctionDraw)
 # Find Boost lib
 set(BOOST_ROOT "" CACHE PATH "Where to look for Boost")
 find_package(Boost 1.50.0 REQUIRED)
+
+if(${Boost_VERSION} LESS 105600)
+  add_definitions(-DBOOST_SPIRIT_USE_PHOENIX_V3)
+endif()
+
 mark_as_advanced(CLEAR BOOST_ROOT)
 if(${CMAKE_VERSION} VERSION_LESS "3.1.0")
   add_compile_options(-std=c++11)

@@ -8,26 +8,6 @@ using namespace funcdraw::expression;
 
 namespace test
 {
-	template<typename T, char c>
-	struct ValueAndType
-	{
-		using type = T;
-		static constexpr char op = c;
-	};
-
-	template<typename T>
-	class ExpressionBuilderTest : public testing::Test{};
-
-	typedef testing::Types
-	<
-		ValueAndType<Sum, '+'>,
-		ValueAndType<Subtract, '-'>,
-		ValueAndType<Multiply, '*'>,
-		ValueAndType<Divide, '/'>
-	> MyTypes;
-
-	TYPED_TEST_CASE(ExpressionBuilderTest, MyTypes);
- 
 	TEST(ExpressionBuilderTest, MakeConstantWorks)
 	{
 		auto constantExpr = ExpressionBuilder::MakeConstant()(42);
@@ -43,12 +23,24 @@ namespace test
 		dynamicCastAndAssertNotNull<Variable>(variableExpr);
 	}
 
-	TYPED_TEST(ExpressionBuilderTest, MakeTwoOperandWorks)
+	TEST(ExpressionBuilderTest, MakeTwoOperandWorks)
 	{
 		ExpressionBuilder::MakeTwoOperand makeTwoOperand;
-
-		auto twoOp = makeTwoOperand(nullptr, TypeParam::op, nullptr);
-		ASSERT_NE(nullptr, twoOp);
-		dynamicCastAndAssertNotNull<TypeParam::type>(twoOp);
+		{
+			auto twoOp = makeTwoOperand(nullptr, '+', nullptr);
+			dynamicCastAndAssertNotNull<Sum>(twoOp);
+		}
+		{
+			auto twoOp = makeTwoOperand(nullptr, '-', nullptr);
+			dynamicCastAndAssertNotNull<Subtract>(twoOp);
+		}
+		{
+			auto twoOp = makeTwoOperand(nullptr, '*', nullptr);
+			dynamicCastAndAssertNotNull<Multiply>(twoOp);
+		}
+		{
+			auto twoOp = makeTwoOperand(nullptr, '/', nullptr);
+			dynamicCastAndAssertNotNull<Divide>(twoOp);
+		}
 	}
 }

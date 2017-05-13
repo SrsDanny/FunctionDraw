@@ -9,10 +9,9 @@ namespace funcdraw { namespace drawing
 			typename = typename std::enable_if<
 				std::is_convertible<decltype(std::declval<Function>()(std::declval<double>())), 
 				double>::value>::type,
-			typename = std::void_t<
-				decltype(std::declval<Iterable>().begin()),
-				decltype(std::declval<Iterable>().end())
-			>>
+			typename = decltype(std::declval<Iterable>().begin()),
+			typename = decltype(std::declval<Iterable>().end())
+			>
 		Line build(const Function& function, const Iterable& range)
 		{
 			Line line;

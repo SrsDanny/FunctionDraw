@@ -3,7 +3,7 @@
 #include <boost/geometry/geometries/point_xy.hpp>
 #include <boost/geometry/geometries/box.hpp>
 
-#if BOOST_VERSION >= 105500
+#if BOOST_VERSION >= 105600
 #include <boost/geometry/geometries/multi_linestring.hpp>
 #else
 #include <boost/geometry/multi/geometries/multi_linestring.hpp>

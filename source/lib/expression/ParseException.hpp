@@ -26,7 +26,7 @@ namespace funcdraw { namespace expression
 			: context(constructContext(begin, end)),
 			  index(index) {}
 
-		char const* what() const override { return name.c_str(); }
+		char const* what() const noexcept override { return name.c_str(); }
 
 		std::string getContext() const { return context; }
 		size_t getIndex() const { return index; }

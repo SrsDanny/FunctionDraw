@@ -10,7 +10,6 @@
 #include "HelperFunctions.hpp"
 
 using namespace funcdraw::drawing;
-using namespace std::string_literals;
 
 using ::testing::_;
 using ::testing::Eq;
@@ -76,17 +75,35 @@ namespace test
 		MockCanvas canvas;
 		Figure figure;
 
-		figure.addFunction("3*x"s, Color::PURPLE);
+		figure.addFunction(std::string("3*x"), Color::PURPLE);
 		figure.addFunction([](double x) {return 100; }, Color::CYAN);
 		figure.addFunction([](double x) {return -x; }, Color::GREEN);
 		
+		MultiLine multiLine;
+		Line line;
+		line.push_back(Point(-1., -3.));
+		line.push_back(Point(0., 0.));
+		line.push_back(Point(1., 3.));
+		line.push_back(Point(2., 6.));
+		multiLine.push_back(move(line));
+		line.clear();
+
+		line.push_back(Point(-1., 100.));
+		line.push_back(Point(0., 100.));
+		line.push_back(Point(1., 100.));
+		line.push_back(Point(2., 100.));
+		multiLine.push_back(move(line));
+		line.clear();
+
+		line.push_back(Point(-1., 1.));
+		line.push_back(Point(0., 0.));
+		line.push_back(Point(1., -1.));
+		line.push_back(Point(2., -2.));
+		multiLine.push_back(move(line));
+
 		EXPECT_CALL(canvas, 
 			drawLines(
-				Truly(MultiLineEq({
-						{ { -1., -3. }, { 0., 0. }, { 1., 3. }, { 2., 6. }},
-						{ { -1., 100 }, { 0., 100 }, { 1., 100 }, { 2., 100 } },
-						{ { -1., 1 }, { 0., 0 }, { 1., -1 }, { 2., -2 } }
-						})), 
+				Truly(MultiLineEq(multiLine)), 
 				std::vector<Color>{ Color::PURPLE, Color::CYAN, Color::GREEN },
 				Truly(TransformEq(PointTransform(-1, 2, -3, 100)))))
 			.Times(1);
