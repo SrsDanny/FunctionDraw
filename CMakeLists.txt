@@ -21,16 +21,16 @@ endif()
 include_directories(${Boost_INCLUDE_DIR})
 
 # Add function drawing library
-add_subdirectory(source/lib)
+add_subdirectory(lib)
 
 # Calculator example
 option(BUILD_EXAMPLE "Build calculator example app" OFF)
 if(BUILD_EXAMPLE)
-  add_subdirectory(source/calc)
+  add_subdirectory(calc)
 endif()
 
 # Unit tests
 option(BUILD_TESTS "Build unit tests" OFF)
 if(BUILD_TESTS)
-  add_subdirectory(source/test)
+  add_subdirectory(test)
 endif()
