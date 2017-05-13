@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
-#include <drawing/PointTransform.hpp>
-#include <drawing/GeometricTypes.hpp>
-#include "../HelperFunctions.hpp"
+#include "drawing/PointTransform.hpp"
+#include "drawing/GeometricTypes.hpp"
+#include "HelperFunctions.hpp"
 
 using namespace funcdraw::drawing;
 

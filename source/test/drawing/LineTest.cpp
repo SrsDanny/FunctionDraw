@@ -1,9 +1,9 @@
 #include <gtest/gtest.h>
-#include <drawing/LineBuilder.hpp>
+#include "drawing/LineBuilder.hpp"
 #include <list>
 #include <vector>
-#include <expression/Parser.hpp>
-#include <HelperFunctions.hpp>
+#include "expression/Parser.hpp"
+#include "HelperFunctions.hpp"
 #include "drawing/Range.hpp"
 
 using namespace funcdraw::drawing;

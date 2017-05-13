@@ -1,5 +1,4 @@
 #include "Figure.hpp"
-#include <list>
 #include "Range.hpp"
 #include <boost/geometry.hpp>
 #include "LineBuilder.hpp"

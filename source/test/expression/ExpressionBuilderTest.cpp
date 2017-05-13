@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 #include <memory>
-#include <expression/ExpressionBuilder.hpp>
-#include <expression/Expression.hpp>
-#include <HelperFunctions.hpp>
+#include "expression/ExpressionBuilder.hpp"
+#include "expression/Expression.hpp"
+#include "HelperFunctions.hpp"
 
 using namespace funcdraw::expression;
 
