@@ -9,5 +9,3 @@ set(EXP2SVG_HEADERS
 
 add_executable(Expression2SVG ${EXP2SVG_SOURCES} ${EXP2SVG_HEADERS})
 target_link_libraries(Expression2SVG FuncDrawLib)
-
-install(TARGETS Expression2SVG)
