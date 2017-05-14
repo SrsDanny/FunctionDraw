@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include "drawing/GeometricTypes.h"
 #include "drawing/Color.h"
-#include "drawing/PointTransform.h"
+#include "drawing/NormalizingTransformBuilder.h"
 #include "drawing/ICanvas.h"
 #include "drawing/Figure.h"
 #include "drawing/Range.h"
@@ -20,33 +20,14 @@ namespace test
 	class MockCanvas : public ICanvas
 	{
 	public:
-		MOCK_METHOD3(drawLines,
-			void(const MultiLine& lines,
-				std::vector<Color> colors,
-				const PointTransform& figureTransform));
-	};
-
-	class TransformEq
-	{
-		boost::numeric::ublas::matrix<double> matrix;
-	public:
-		explicit TransformEq(const PointTransform& transformation)
-			: matrix(transformation.getTransformation().matrix()) {}
-
-		bool operator()(const PointTransform& other) const
-		{
-			auto& otherMatrix = other.getTransformation().matrix();
-
-			if (matrix.size1() != otherMatrix.size1()
-				|| matrix.size2() != otherMatrix.size2())
-				return false;
-
-			for (auto i = 0; i < matrix.size1(); ++i)
-				for (auto j = 0; j < matrix.size2(); ++j)
-					if (std::abs(matrix(i, j) - otherMatrix(i, j)) > std::numeric_limits<double>::epsilon())
-						return false;
-			return true;
-		}
+		MOCK_METHOD2(drawLines,
+			void(const MultiLine& lines, const std::vector<Color>& colors));
+		MOCK_METHOD2(drawLines,
+			void(const MultiLine& lines, const Color& colors));
+		MOCK_METHOD2(drawLine,
+			void(const Line& text, const Color& color));
+		MOCK_METHOD3(drawText,
+			void(const Point& point, const std::string& text, const Color& color));
 	};
 
 	class MultiLineEq
@@ -79,33 +60,15 @@ namespace test
 		figure.addFunction([](double x) {return 100; }, Color::CYAN);
 		figure.addFunction([](double x) {return -x; }, Color::GREEN);
 
-		MultiLine multiLine;
-		Line line;
-		line.push_back(Point(-1., -3.));
-		line.push_back(Point(0., 0.));
-		line.push_back(Point(1., 3.));
-		line.push_back(Point(2., 6.));
-		multiLine.push_back(move(line));
-		line.clear();
+		MultiLine multiLine, multiLine2;
+		boost::geometry::read_wkt("multilinestring((-1 -3, 0 0, 1 3, 2 6),(-1 100, 0 100, 1 100, 2 100),(-1 1, 0 0, 1 -1, 2 -2))", multiLine);
 
-		line.push_back(Point(-1., 100.));
-		line.push_back(Point(0., 100.));
-		line.push_back(Point(1., 100.));
-		line.push_back(Point(2., 100.));
-		multiLine.push_back(move(line));
-		line.clear();
-
-		line.push_back(Point(-1., 1.));
-		line.push_back(Point(0., 0.));
-		line.push_back(Point(1., -1.));
-		line.push_back(Point(2., -2.));
-		multiLine.push_back(move(line));
+		boost::geometry::transform(multiLine, multiLine2, buildNormalizingTransform(-1, 2, -3, 100));
 
 		EXPECT_CALL(canvas,
 			drawLines(
-				Truly(MultiLineEq(multiLine)),
-				std::vector<Color>{ Color::PURPLE, Color::CYAN, Color::GREEN },
-				Truly(TransformEq(PointTransform(-1, 2, -3, 100)))))
+				Truly(MultiLineEq(multiLine2)),
+				std::vector<Color>{ Color::PURPLE, Color::CYAN, Color::GREEN }))
 			.Times(1);
 
 		figure.draw(canvas, Range(-1, 2, 4));

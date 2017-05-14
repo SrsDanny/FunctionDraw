@@ -34,3 +34,9 @@ option(BUILD_TESTS "Build unit tests" OFF)
 if(BUILD_TESTS)
   add_subdirectory(test)
 endif()
+
+# Expression to SVG drawing app
+option(BUILD_EXP2SVG "Build expression to SVG drawing app" ON)
+if(BUILD_EXP2SVG)
+  add_subdirectory(exp2svg)
+endif()

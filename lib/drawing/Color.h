@@ -1,4 +1,6 @@
 #pragma once
+#include <ostream>
+#include <vector>
 
 namespace funcdraw { namespace drawing
 {
@@ -21,6 +23,20 @@ namespace funcdraw { namespace drawing
 		static const Color PURPLE;
 		static const Color CYAN;
 
+		static std::vector<Color> getDefaultColors()
+		{
+			return std::vector<Color>
+			{
+				BLACK,
+				BLUE,
+				RED,
+				GREEN,
+				YELLOW,
+				PURPLE,
+				CYAN
+			};
+		}
+
 
 		bool operator==(const Color& rhs) const
 		{
@@ -31,4 +47,9 @@ namespace funcdraw { namespace drawing
 
 		bool operator!=(const Color& rhs) const { return !(*this == rhs); }
 	};
+
+	inline std::ostream& operator<<(std::ostream& os,  const Color& color)
+	{
+		return os << "rgb(" << +color.r << ", " << +color.g << ", " << +color.b << ")";
+	}
 }}

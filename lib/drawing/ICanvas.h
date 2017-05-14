@@ -1,15 +1,18 @@
 #pragma once
 #include "Color.h"
+#include "GeometricTypes.h"
 
 namespace funcdraw { namespace drawing
 {
 	class PointTransform;
-	using MultiLine = boost::geometry::model::multi_linestring<boost::geometry::model::linestring<boost::geometry::model::d2::point_xy<double>>>;
 
 	class ICanvas
 	{
 	public:
 		virtual ~ICanvas() = default;
-		virtual void drawLines(const MultiLine& lines, std::vector<Color>, const PointTransform& figureTransform) = 0;
+		virtual void drawLines(const MultiLine& lines, const std::vector<Color>& colors) = 0;
+		virtual void drawLines(const MultiLine& lines, const Color& colors) = 0;
+		virtual void drawLine(const Line& line, const Color& color) = 0;
+		virtual void drawText(const Point& point, const std::string& text, const Color& color) = 0;
 	};
 }}

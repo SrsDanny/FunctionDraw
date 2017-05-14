@@ -2,13 +2,14 @@
 #include "Range.h"
 #include <boost/geometry.hpp>
 #include "LineBuilder.h"
+#include "NormalizingTransformBuilder.h"
 
 using namespace std;
 namespace bg = boost::geometry;
 
 void funcdraw::drawing::Figure::draw(ICanvas& canvas, Range range) const
 {
-	MultiLine lines;
+	MultiLine lines, normalizedLines;
 	vector<Color> colors;
 
 	for(auto& fun : functions)
@@ -18,11 +19,12 @@ void funcdraw::drawing::Figure::draw(ICanvas& canvas, Range range) const
 	}
 
 	auto figureSize = bg::return_envelope<Box>(lines);
-	PointTransform figureTransform(
+	auto figureTransform = buildNormalizingTransform(
 		figureSize.min_corner().x(),
 		figureSize.max_corner().x(),
 		figureSize.min_corner().y(),
 		figureSize.max_corner().y());
 
-	canvas.drawLines(lines, colors, figureTransform);
+	bg::transform(lines, normalizedLines, figureTransform);
+	canvas.drawLines(normalizedLines, colors);
 }
