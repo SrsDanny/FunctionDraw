@@ -29,4 +29,4 @@ After running Expression2SVG you can enter as many mathematical expressions as y
 Then you can specify the range of the X axis (the range of the Y axis is calculated to fit all lines). Finally specify the size and name of the svg file to save it.
 
 # Unit tests
-The unit tests can be built by enabling the `BUILD_TESTS` CMake variable. CMake then automatically downloads the Google Test framework.
+The unit tests can be built by enabling the `BUILD_TESTS` CMake variable. CMake then automatically downloads the Google Test framework. After the project is built the tests can be run with the `test/UnitTest` executable.
