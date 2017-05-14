@@ -51,7 +51,7 @@ namespace test
 
 	TEST(CanvasTest, DrawLineTest)
 	{
-		MockCanvas canvas;
+		testing::NiceMock<MockCanvas> canvas;
 		Figure figure;
 
 		figure.addFunction(std::string("3*x"), Color::PURPLE);

@@ -3,6 +3,7 @@ set(FUNC_DRAW_LIB_SOURCES
   drawing/Figure.cpp
   drawing/Axes.cpp
   expression/ParseException.cpp
+  expression/ExpressionBuilder.cpp
   expression/Parser.cpp
 )
 

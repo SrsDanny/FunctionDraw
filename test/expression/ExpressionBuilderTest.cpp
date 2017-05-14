@@ -5,12 +5,13 @@
 #include "HelperFunctions.h"
 
 using namespace funcdraw::expression;
+using namespace expressionBuilder;
 
 namespace test
 {
 	TEST(ExpressionBuilderTest, MakeConstantWorks)
 	{
-		auto constantExpr = ExpressionBuilder::MakeConstant()(42);
+		auto constantExpr = makeConstant(42);
 		ASSERT_NE(nullptr, constantExpr);
 		auto constant = dynamicCastAndAssertNotNull<Constant>(constantExpr);
 		EXPECT_EQ(42, constant->getValue());
@@ -18,14 +19,13 @@ namespace test
 
 	TEST(ExpressionBuilderTest, MakeVariableWorks)
 	{
-		auto variableExpr = ExpressionBuilder::MakeVariable()();
+		auto variableExpr = makeVariable();
 		ASSERT_NE(nullptr, variableExpr);
 		dynamicCastAndAssertNotNull<Variable>(variableExpr);
 	}
 
 	TEST(ExpressionBuilderTest, MakeTwoOperandWorks)
 	{
-		ExpressionBuilder::MakeTwoOperand makeTwoOperand;
 		{
 			auto twoOp = makeTwoOperand(nullptr, '+', nullptr);
 			dynamicCastAndAssertNotNull<Sum>(twoOp);

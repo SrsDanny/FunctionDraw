@@ -3,11 +3,17 @@
 #include <boost/spirit/include/phoenix.hpp>
 #include "Expression.h"
 #include "ExpressionBuilder.h"
+#include <boost/phoenix.hpp>
 
 namespace funcdraw { namespace expression
 {
 	namespace qi = boost::spirit::qi;
 	namespace ascii = boost::spirit::ascii;
+
+	BOOST_PHOENIX_ADAPT_FUNCTION(Expression::ptr, makeTwoOperand, expressionBuilder::makeTwoOperand, 3)
+	BOOST_PHOENIX_ADAPT_FUNCTION(Expression::ptr, makeConstant, expressionBuilder::makeConstant, 1)
+	BOOST_PHOENIX_ADAPT_FUNCTION(Expression::ptr, makeVariable, expressionBuilder::makeVariable, 1)
+	
 
 	template <typename Iterator>
 	struct ExpressionGrammar : qi::grammar<Iterator, Expression::ptr(), ascii::space_type>
@@ -20,10 +26,6 @@ namespace funcdraw { namespace expression
 		                                                         variable;
 		qi::rule<Iterator, char(), ascii::space_type> operatorSum,
 		                                              operatorProd;
-
-		boost::phoenix::function<ExpressionBuilder::MakeTwoOperand> makeTwoOperand;
-		boost::phoenix::function<ExpressionBuilder::MakeConstant> makeConstant;
-		boost::phoenix::function<ExpressionBuilder::MakeVariable> makeVariable;
 
 		ExpressionGrammar() : ExpressionGrammar::base_type(expression)
 		{
@@ -45,7 +47,7 @@ namespace funcdraw { namespace expression
 			factor %= number | variable | parenthesized;
 			parenthesized %= '(' > expression > ')';
 			number = qi::double_[_val = makeConstant(_1)];
-			variable = (-char_('-') >> char_('x'))[_val = makeVariable(_1)];
+			variable = (-char_('-') >> char_('x'))[_val = makeVariable(!!_1)];
 		}
 	};
 }}
