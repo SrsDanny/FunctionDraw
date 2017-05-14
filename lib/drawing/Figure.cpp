@@ -3,7 +3,6 @@
 #include <boost/geometry.hpp>
 #include "LineBuilder.h"
 #include "NormalizingTransformBuilder.h"
-#include "../../exp2svg/SVGCanvas.h"
 #include "Axes.h"
 
 using namespace std;

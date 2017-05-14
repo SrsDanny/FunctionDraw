@@ -1,7 +1,5 @@
 #pragma once
 #include "Expression.h"
-#include <exception>
-#include <boost/optional.hpp>
 
 namespace funcdraw { namespace expression
 {

@@ -1,4 +1,5 @@
 #include "ExpressionBuilder.h"
+#include <stdexcept>
 
 funcdraw::expression::Expression::ptr funcdraw::expression::expressionBuilder::makeTwoOperand(Expression::ptr lhs, char op, Expression::ptr rhs)
 {

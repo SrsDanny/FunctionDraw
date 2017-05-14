@@ -1,6 +1,5 @@
 #include "Axes.h"
 #include "Color.h"
-#include "../../exp2svg/SVGCanvas.h"
 
 void funcdraw::drawing::drawAxes(const Point& origo, ICanvas& canvas)
 {

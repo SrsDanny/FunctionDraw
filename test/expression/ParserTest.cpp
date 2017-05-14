@@ -1,8 +1,6 @@
 #include <gtest/gtest.h>
 #include "expression/Parser.h"
-#include "expression/Parser.h"
 #include "HelperFunctions.h"
-#include "expression/ParseException.h"
 #include "expression/ParseException.h"
 
 using namespace funcdraw::expression;
