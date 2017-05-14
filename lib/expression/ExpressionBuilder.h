@@ -1,6 +1,7 @@
 #pragma once
 #include "Expression.h"
 #include <exception>
+#include <boost/optional.hpp>
 
 namespace funcdraw { namespace expression
 {
@@ -36,8 +37,11 @@ namespace funcdraw { namespace expression
 
 		struct MakeVariable
 		{
-			Expression::ptr operator()() const
+			Expression::ptr operator()(boost::optional<char> optNegative = boost::none) const
 			{
+				if (optNegative)
+					return MakeTwoOperand()(MakeConstant()(-1.), '*', std::make_shared<Variable>());
+				
 				return std::make_shared<Variable>();
 			}
 		};

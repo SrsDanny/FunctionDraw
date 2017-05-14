@@ -45,7 +45,7 @@ namespace funcdraw { namespace expression
 			factor %= number | variable | parenthesized;
 			parenthesized %= '(' > expression > ')';
 			number = qi::double_[_val = makeConstant(_1)];
-			variable = char_('x')[_val = makeVariable()];
+			variable = (-char_('-') >> char_('x'))[_val = makeVariable(_1)];
 		}
 	};
 }}

@@ -44,6 +44,15 @@ namespace test
 		dynamicCastAndAssertNotNull<Constant>(expression);
 	}
 
+	TEST(ParserTest, TestNegativeVariable)
+	{
+		std::string expressionStr = "-x";
+		auto expression = Parser::parse(expressionStr);
+		auto mul = dynamicCastAndAssertNotNull<Multiply>(expression);
+		dynamicCastAndAssertNotNull<Constant>(mul->getLhs());
+		dynamicCastAndAssertNotNull<Variable>(mul->getRhs());
+	}
+
 	TEST_P(ParserTest, TestInvalidExpression)
 	{
 		EXPECT_THROW(Parser::parse(GetParam()), ParseException);
