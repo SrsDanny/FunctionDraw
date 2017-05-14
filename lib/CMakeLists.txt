@@ -1,6 +1,7 @@
 set(FUNC_DRAW_LIB_SOURCES
   drawing/Color.cpp
   drawing/Figure.cpp
+  drawing/Axes.cpp
   expression/ParseException.cpp
   expression/Parser.cpp
 )
@@ -11,8 +12,9 @@ set(FUNC_DRAW_LIB_HEADERS
   drawing/GeometricTypes.h
   drawing/ICanvas.h
   drawing/LineBuilder.h
-  drawing/PointTransform.h
+  drawing/NormalizingTransformBuilder.h
   drawing/Range.h
+  drawing/Axes.h
   expression/Expression.h
   expression/ExpressionBuilder.h
   expression/ExpressionGrammar.h

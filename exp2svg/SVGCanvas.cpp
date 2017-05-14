@@ -18,12 +18,6 @@ void SVGCanvas::drawLines(const funcdraw::drawing::MultiLine& lines, const funcd
 	}
 }
 
-void SVGCanvas::drawText(const Point& point, const std::string& text, const funcdraw::drawing::Color& color)
-{
-	svgOutput << boost::format(R"(<text x="%1%" y="%2%" font-family="Verdana" font-size="10">%3%</text>)") 
-		% point.x() % point.y() % text;
-}
-
 void SVGCanvas::drawLine(const funcdraw::drawing::Line& line, const funcdraw::drawing::Color& color)
 {
 	Point current(line[0].x() * width, (1 - line[0].y()) * heigth);

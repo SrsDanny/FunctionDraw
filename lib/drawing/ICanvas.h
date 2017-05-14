@@ -13,6 +13,5 @@ namespace funcdraw { namespace drawing
 		virtual void drawLines(const MultiLine& lines, const std::vector<Color>& colors) = 0;
 		virtual void drawLines(const MultiLine& lines, const Color& colors) = 0;
 		virtual void drawLine(const Line& line, const Color& color) = 0;
-		virtual void drawText(const Point& point, const std::string& text, const Color& color) = 0;
 	};
 }}

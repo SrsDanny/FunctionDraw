@@ -26,8 +26,6 @@ namespace test
 			void(const MultiLine& lines, const Color& colors));
 		MOCK_METHOD2(drawLine,
 			void(const Line& text, const Color& color));
-		MOCK_METHOD3(drawText,
-			void(const Point& point, const std::string& text, const Color& color));
 	};
 
 	class MultiLineEq

@@ -3,6 +3,8 @@
 #include <boost/geometry.hpp>
 #include "LineBuilder.h"
 #include "NormalizingTransformBuilder.h"
+#include "../../exp2svg/SVGCanvas.h"
+#include "Axes.h"
 
 using namespace std;
 namespace bg = boost::geometry;
@@ -24,6 +26,10 @@ void funcdraw::drawing::Figure::draw(ICanvas& canvas, Range range) const
 		figureSize.max_corner().x(),
 		figureSize.min_corner().y(),
 		figureSize.max_corner().y());
+
+	Point tfOrigo;
+	bg::transform(Point(), tfOrigo, figureTransform);
+	drawAxes(tfOrigo, canvas);
 
 	bg::transform(lines, normalizedLines, figureTransform);
 	canvas.drawLines(normalizedLines, colors);

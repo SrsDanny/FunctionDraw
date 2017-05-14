@@ -28,6 +28,5 @@ public:
 
 	void drawLines(const funcdraw::drawing::MultiLine& lines, const std::vector<funcdraw::drawing::Color>& colors) override;
 	void drawLines(const funcdraw::drawing::MultiLine& lines, const funcdraw::drawing::Color& color) override;
-	void drawText(const funcdraw::drawing::Point& point, const std::string& text, const funcdraw::drawing::Color& color) override;
 	void drawLine(const funcdraw::drawing::Line& line, const funcdraw::drawing::Color& color) override;
 };
