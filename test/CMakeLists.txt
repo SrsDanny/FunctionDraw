@@ -1,3 +1,5 @@
+enable_testing()
+
 # Download and unpack googletest at configure time
 
 # Prevent overriding the parent project's compiler/linker
@@ -46,3 +48,5 @@ source_group("Header Files\\expression" REGULAR_EXPRESSION "expression/.*\\.h")
 add_executable(UnitTest ${UNIT_TESTS_SOURCES} ${UNIT_TESTS_HEADERS})
 target_include_directories(UnitTest PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(UnitTest FuncDrawLib gmock gtest)
+
+add_test(unittest UnitTest)
